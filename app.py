@@ -15,7 +15,10 @@ AWS_REGION = os.getenv("AWS_REGION")
 S3_BUCKET_NAME = os.getenv("S3_BUCKET_NAME")
 
 # Initialize Flask
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)  # Allow frontend requests
+
 
 # Initialize AWS Clients
 s3_client = boto3.client("s3", aws_access_key_id=AWS_ACCESS_KEY, aws_secret_access_key=AWS_SECRET_KEY, region_name=AWS_REGION)
